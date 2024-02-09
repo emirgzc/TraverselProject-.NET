@@ -1,0 +1,17 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AnaLayout.cshtml";
+}
+
+
+@await Component.InvokeAsync("SliderView")
+
+@await Component.InvokeAsync("PopularDestination")
+
+@await Component.InvokeAsync("Statistic")
+
+@await Component.InvokeAsync("Feature")
+
+@await Component.InvokeAsync("SubAbout")
+
+@await Component.InvokeAsync("Testimonials")

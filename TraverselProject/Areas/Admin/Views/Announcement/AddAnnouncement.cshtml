@@ -1,0 +1,23 @@
+﻿
+@model AnnouncementAddDto
+
+@{
+    ViewData["Title"] = "AddAnnouncement";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h4> Yeni Duyuru Oluşturma</h4>
+
+<form method="post">
+	@Html.Label("Başlık")
+	<input type="text" asp-for="Title" class="form-control" />
+	<span asp-validation-for="Title" class="text-danger"></span>
+	<br />
+	@Html.Label("Açıklama")
+	<textarea cols="30" rows="5" class="form-control" asp-for="Content"></textarea>
+	<span asp-validation-for="Content" class="text-danger"></span>
+	<br />
+	<button class="btn btn-outline-dark">Duyuru Oluştur</button>
+</form>
+
+

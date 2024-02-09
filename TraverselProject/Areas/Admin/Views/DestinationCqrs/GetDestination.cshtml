@@ -1,0 +1,24 @@
+﻿
+@model GetDestinationByIDQueryResult
+
+@{
+    ViewData["Title"] = "GetDestination";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h4>Rota Düzenleme</h4>
+
+<form method="post">
+	@Html.HiddenFor(x=>x.desid)
+	@Html.Label("Şehir")
+	<input type="text" asp-for="city" class="form-control" />
+	<br />
+	@Html.Label("Gün Gece")
+	<input type="text" asp-for="daynight" class="form-control" />
+	<br />
+	@Html.Label("Fiyat")
+	<input type="text" asp-for="price" class="form-control" />
+	<br />
+	<button class="btn btn-outline-dark">Düzenle</button>
+</form>
+

@@ -1,0 +1,22 @@
+﻿
+@model TraverselProject.Models.MailRequest
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h4> Yeni Mail Gönderme</h4>
+
+<form method="post">
+	@Html.Label("Alıcı Mail Adresi")
+	<input type="text" asp-for="ReceiverMail" class="form-control" />
+	<br />
+	@Html.Label("Konu")
+	<input type="text" asp-for="Subject" class="form-control" />
+	<br />
+	@Html.Label("Mesaj İçeriği")
+	<textarea cols="30" rows="5" asp-for="Body" class="form-control" ></textarea>
+	<br />
+	<button class="btn btn-outline-dark">Gönder</button>
+</form>

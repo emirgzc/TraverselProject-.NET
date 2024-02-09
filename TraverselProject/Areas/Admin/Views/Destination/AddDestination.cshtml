@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Destination
+
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h4> Yeni Rota Oluşturma</h4>
+
+<form method="post">
+	@Html.Label("Şehir")
+	<input type="text" asp-for="City" class="form-control" />
+	<br />
+	@Html.Label("Gün Gece")
+	<input type="text" asp-for="DayNight" class="form-control" />
+	<br />
+	@Html.Label("Fiyat")
+	<input type="text" asp-for="Price" class="form-control" />
+	<br />
+	@Html.Label("Ana Görsel")
+	<input type="text" asp-for="Image" class="form-control" />
+	<br />
+	@Html.Label("Kapak Görsel")
+	<input type="text" asp-for="CoverImage" class="form-control" />
+	<br />
+	@Html.Label("Kişi Sayısı")
+	<input type="number" max="100" min="0" asp-for="Capacity" class="form-control" />
+	<br />
+	@Html.Label("Açıklama")
+	<textarea cols="30" rows="5" class="form-control" asp-for="Description"></textarea>
+	<br />
+	<button class="btn btn-outline-dark">Rota Oluştur</button>
+</form>
+
+
+

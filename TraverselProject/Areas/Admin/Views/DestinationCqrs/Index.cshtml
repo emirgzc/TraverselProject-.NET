@@ -1,0 +1,50 @@
+﻿
+@model List<GetAllDestinationQueryResult>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="row">
+	<div class="col-12 m-b-30">
+		<div class="row mb-4">
+			<div class="col-md-6 col-lg-3">
+				<h4 class="d-inline">Tur Rotaları</h4>
+				<p class="text-muted">@Model.Count() adet</p>
+			</div>
+			<div class="col-md-6 col-lg-3">
+				<a href="/Admin/DestinationCqrs/AddDestination" class="btn btn-success">Yeni Ekle</a>
+			</div>
+
+
+		</div>
+
+		<div class="row">
+
+			@foreach (var item in Model)
+			{
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-header bg-white">
+							<h5 class="card-title">@item.city</h5>
+							<h6 class="card-subtitle mb-2 text-muted">@item.price ₺</h6>
+						</div>
+						<div class="card-body">
+							<a href="/Admin/DestinationCqrs/DeleteDestination/@item.id" class="btn btn-danger">Sil</a>
+							<a href="/Admin/DestinationCqrs/GetDestination/@item.id" class="btn btn-warning">Güncelle</a>
+						</div>
+						<div class="card-footer">
+							<p class="card-text d-inline">
+								<small class="text-muted">@item.capacity kontenjan - @item.dayNight</small>
+							</p><a href="#" class="card-link float-right"><small>Sitede Gör</small></a>
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
+	</div>
+</div>
+

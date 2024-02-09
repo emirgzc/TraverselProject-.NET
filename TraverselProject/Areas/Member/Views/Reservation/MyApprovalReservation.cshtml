@@ -1,0 +1,66 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+
+@{
+	ViewData["Title"] = "MyApprovalReservation";
+	Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h3>Onay Bekleyen Rezervasyonlarım</h3>
+
+
+@if (!Model.Any())
+{
+	<div class="container mt-5">
+		<h4 style="color:crimson">Onay Bekleyen rezervasyonunuz bulunmamaktadır..</h4>
+	</div>
+}
+else{
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card mb-4">
+				<div class="card-body px-0 pt-0 pb-2">
+					<div class="table-responsive p-0">
+						<table class="table align-items-center mb-0">
+							<thead>
+								<tr>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasyon</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kişi Sayısı</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarih</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Durum</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td class="align-middle text-center">
+											<span class="text-secondary text-xs font-weight-bold">@item.ReservationID</span>
+										</td>
+										<td>
+											<p class="text-xs text-center font-weight-bold mb-0">@item.Destination.City</p>
+										</td>
+										<td>
+											<p class="text-xs text-center font-weight-bold mb-0">@item.PersonCount</p>
+										</td>
+										<td class="align-middle text-center text-sm">
+											<span class="text-secondary text-xs font-weight-bold">@(((DateTime)item.ReservationDate).ToString("dd MMMM yyyy"))</span>
+										</td>
+										<td class="align-middle text-center">
+											@if (item.ReserStatusID == 1)
+											{
+												<span class="badge badge-sm bg-gradient-warning">@item.ReserStatus.ReserStatusName</span>
+											}
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}

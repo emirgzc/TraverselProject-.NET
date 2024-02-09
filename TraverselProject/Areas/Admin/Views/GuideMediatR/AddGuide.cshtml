@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model CreateGuideCommand
+
+@{
+	ViewData["Title"] = "GetGuide";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h4>Rehber Ekleme</h4>
+
+<form method="post">
+	@Html.Label("Ad Soyad")
+	<input type="text" asp-for="Name" class="form-control" />
+	<br />
+	@Html.Label("Meslek")
+	<input type="text" asp-for="Job" class="form-control" />
+	<br />
+	<button class="btn btn-outline-dark">Ekle</button>
+</form>
+

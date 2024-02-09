@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+	<div class="col-12 m-b-30">
+		<div class="row mb-4">
+			<div class="col-md-6 col-lg-3">
+				<h4 class="d-inline">Tur Rotaları</h4>
+				<p class="text-muted">@Model.Count() adet</p>
+			</div>
+			<div class="col-md-6 col-lg-3">
+				<a href="/Admin/Destination/AddDestination" class="btn btn-success">Yeni Ekle</a>
+			</div>
+			
+			
+		</div>
+
+		<div class="row">
+
+			@foreach (var item in Model)
+			{
+				<div class="col-md-6 col-lg-3">
+					<div class="card">
+						<div class="card-header bg-white">
+							<h5 class="card-title">@item.City</h5>
+							<h6 class="card-subtitle mb-2 text-muted">@item.Price ₺</h6>
+						</div>
+						<img class="img-fluid" src="@item.Image" alt="">
+						<div class="card-body">
+							<a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-primary" target="_blank">Sitede Gör</a>
+							<a href="/Admin/Destination/DeleteDestination/@item.DestinationID" class="btn btn-danger">Sil</a>
+							<a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-warning">Güncelle</a>
+						</div>
+						<div class="card-footer">
+							<p class="card-text d-inline">
+								<small class="text-muted">@item.Capacity kontenjan - @item.DayNight</small>
+							</p><a href="#" class="card-link float-right"><small>Sitede Gör</small></a>
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,21 @@
+﻿
+@model GetGuideByIDQueryResult
+
+@{
+    ViewData["Title"] = "GetGuide";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h4>Rehber Düzenleme</h4>
+
+<form method="post">
+	@Html.HiddenFor(x=>x.GuideID)
+	@Html.Label("Ad Soyad")
+	<input type="text" asp-for="Name" class="form-control" />
+	<br />
+	@Html.Label("Meslek")
+	<input type="text" asp-for="Job" class="form-control" />
+	<br />
+	<button class="btn btn-outline-dark">Düzenle</button>
+</form>
+

@@ -1,0 +1,60 @@
+﻿@using EntityLayer.Concrete
+@model List<Guide>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Görsel</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Meslek</th>
+                                    <th>Durum</th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.GuideID</td>
+                                        <td><img src="@item.Image" height="50"/></td>
+                                        <td>@item.Name</td>
+                                        <td><span>@item.Job</span></td>
+                                        <td>
+                                            @if (!item.Status)
+                                            {
+                                                <a href="/Admin/Guide/ChangeToTrue/@item.GuideID" class="btn btn-success">Aktif Yap</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Admin/Guide/ChangeToFalse/@item.GuideID" class="btn btn-danger">Pasif Yap</a>
+                                            }
+                                        </td>
+                                        <td><a href="/Admin/Guide/DeleteGuide/@item.GuideID" class="btn-sm btn-danger">Sil</a></td>
+                                        <td><a href="/Admin/Guide/EditGuide/@item.GuideID" class="btn-sm btn-info">Güncelle</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/Admin/Guide/AddGuide" class="btn btn-success">Yeni Ekle</a>

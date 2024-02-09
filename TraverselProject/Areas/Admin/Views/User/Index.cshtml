@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concrete
+@model List<AppUser>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+	int sayac = 0;
+}
+
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<div class="active-member">
+					<div class="table-responsive">
+						<table class="table table-xs mb-0">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Ad Soyad</th>
+									<th>Kullanıcı Adı</th>
+									<th>Mail</th>
+									<th>Sil</th>
+									<th>Düzenle</th>
+									<th>Yorumlar</th>
+									<th>Tur Geçmişi</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								@foreach (var item in Model)
+								{
+									<tr>
+										@{sayac += 1;}
+										<td>@sayac</td>
+										<td>@item.Name @item.Surname</td>
+										<td><span>@item.UserName</span></td>
+										<td><span>@item.Email</span></td>
+										<td><a href="/Admin/User/DeleteUser/@item.Id" class="btn-sm btn-danger">Sil</a></td>
+										<td><a href="/Admin/User/EditUser/@item.Id" class="btn-sm btn-secondary">Güncelle</a></td>
+										<td><a href="/Admin/User/CommentUser/@item.Id" class="btn-sm btn-warning">Yorumlar</a></td>
+										<td><a href="/Admin/User/ReservationUser/@item.Id" class="btn-sm btn-primary">Tur Geçmişi</a></td>
+									</tr>
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<a href="/Admin/User/AddUser" class="btn btn-success">Yeni Kullanıcı Kaydı</a>

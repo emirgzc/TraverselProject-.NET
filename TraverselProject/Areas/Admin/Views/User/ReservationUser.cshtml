@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+
+@{
+    ViewData["Title"] = "ReservationUser";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Rota</th>
+                                    <th>Kişi Sayısı</th>
+                                    <th>Tarih</th>
+                                    <th>Durum</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ReservationID</td>
+                                        <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                                        <td><span>@item.Destination.City</span></td>
+                                        <td><span>@item.PersonCount</span></td>
+                                        <td><span>@(((DateTime)item.ReservationDate).ToString("dd MMMM yyyy"))</span></td>
+                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> @item.ReserStatus.ReserStatusName</td>
+                                        <td><a href="/Admin/Comment/DeleteComment/@item.ReservationID" class="btn-sm btn-danger">Sil</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
